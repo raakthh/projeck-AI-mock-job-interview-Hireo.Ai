@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hireo.AI - Platform Mock Interview Cerdas</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+      /* CSS yang sama seperti sebelumnya */
+      :root {
+        --primary: #87ceeb;
+        --secondary: #6a5acd;
+        --accent: #ff6b6b;
+        --success: #4ecdc4;
+        --warning: #ffe66d;
+        --bg: #191970;
+        --light-bg: #2a2a8a;
+        --text: #ffffff;
+        --text-secondary: #b0b0ff;
+        --card-bg: rgba(255, 255, 255, 0.1);
+        --shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.3);
+        --gradient: linear-gradient(45deg, var(--primary), var(--secondary));
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+        font-size: 1.6rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem 7%;
+        background-color: rgba(0, 0, 0, 0.9);
+        border-bottom: 2px solid var(--primary);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+      }
+
+      .navbar .navbar-logo {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #0000cd;
+        font-style: italic;
+      }
+
+      .navbar .navbar-logo span {
+        color: #1e90ff;
+      }
+
+      .navbar .navbar-nav {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar .navbar-nav a {
+        color: var(--text);
+        font-size: 1.5rem;
+        padding: 0.8rem 1.5rem;
+        transition: all 0.3s ease;
+        border-radius: 25px;
+        font-weight: 500;
+      }
+
+      .navbar .navbar-nav a:hover {
+        color: var(--primary);
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .navbar .navbar-extra {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      #hamburger-menu {
+        display: none;
+      }
+
+      /* HERO SECTION */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 12rem 7% 6rem;
+        background: linear-gradient(135deg, var(--bg) 0%, var(--light-bg) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(135, 206, 235, 0.1) 0%,
+          transparent 70%
+        );
+        animation: float 20s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      .hero .content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero .content h1 {
+        font-size: 5.5rem;
+        margin-bottom: 2.5rem;
+        line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero .content h1 span {
+        background: linear-gradient(
+          45deg,
+          var(--primary),
+          var(--secondary),
+          var(--accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero .content p {
+        font-size: 2rem;
+        margin-bottom: 4rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 2.5rem;
+        margin-bottom: 6rem;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem 3.5rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .cta:hover::before {
+        left: 100%;
+      }
+
+      .cta.primary {
+        background: var(--gradient);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .cta.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        border: 2px solid var(--primary);
+        backdrop-filter: blur(10px);
+      }
+
+      .cta:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 4rem;
+        flex-wrap: wrap;
+      }
+
+      .stat {
+        text-align: center;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        min-width: 150px;
+      }
+
+      .stat:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+
+      .stat h3 {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .stat p {
+        color: var(--text-secondary);
+        font-size: 1.4rem;
+        margin: 0;
+      }
+
+      /* INTERVIEW SECTION */
+      .interview {
+        padding: 10rem 7%;
+        background: var(--bg);
+      }
+
+      .interview h2 {
+        text-align: center;
+        font-size: 4rem;
+        margin-bottom: 6rem;
+        color: var(--text);
+      }
+
+      .interview-setup {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        margin-bottom: 5rem;
+      }
+
+      .setup-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 4rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .setup-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      .setup-card h3 {
+        font-size: 2.4rem;
+        margin-bottom: 3rem;
+        color: var(--primary);
+        text-align: center;
+      }
+
+      .role-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .role-option {
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid transparent;
+        border-radius: 15px;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .role-option::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .role-option:hover::before {
+        left: 100%;
+      }
+
+      .role-option:hover {
+        border-color: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      .role-option.active {
+        border-color: var(--primary);
+        background: rgba(135, 206, 235, 0.15);
+        transform: translateY(-5px);
+      }
+
+      .role-option.active::after {
+        content: "✓";
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--success);
+        color: white;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+      }
+
+      .role-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+
+      .role-option h4 {
+        color: var(--text);
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+      }
+
+      .role-option p {
+        color: var(--text-secondary);
+        font-size: 1.3rem;
+        line-height: 1.5;
+      }
+
+      .settings-form {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .form-group label {
+        color: var(--text);
+        font-weight: 600;
+        font-size: 1.5rem;
+      }
+
+      .form-group select {
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        color: var(--text);
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .form-group select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .interview-controls {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .cta.large {
+        padding: 1.8rem 4rem;
+        font-size: 1.7rem;
+      }
+
+      /* LIVE INTERVIEW */
+      .live-interview {
+        padding: 10rem 7%;
+        background: var(--bg);
+        min-height: 100vh;
+        display: none;
+      }
+
+      .interview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4rem;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .interview-header h2 {
+        font-size: 3.2rem;
+        color: var(--text);
+        margin: 0;
+      }
+
+      .interview-timer {
+        background: var(--gradient);
+        padding: 1.5rem 3rem;
+        border-radius: 50px;
+        border: 2px solid var(--primary);
+        box-shadow: var(--shadow);
+      }
+
+      .interview-timer span {
+        font-size: 2.4rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .interview-interface {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 4rem;
+      }
+
+      .question-section {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 4rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .question-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 3rem;
+        margin-bottom: 3rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .question-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .question-number {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 1.6rem;
+        background: rgba(135, 206, 235, 0.1);
+        padding: 0.8rem 1.5rem;
+        border-radius: 20px;
+      }
+
+      .question-category {
+        background: var(--gradient);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 20px;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      .question-text p {
+        font-size: 2rem;
+        line-height: 1.7;
+        color: var(--text);
+        margin-bottom: 2rem;
+      }
+
+      .question-timer {
+        margin-top: 2.5rem;
+      }
+
+      .time-bar {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+
+      .time-progress {
+        height: 100%;
+        background: var(--gradient);
+        border-radius: 4px;
+        transition: width 0.3s ease;
+      }
+
+      .question-timer span {
+        color: var(--text-secondary);
+        font-size: 1.4rem;
+      }
+
+      /* Answer Section */
+      .answer-section {
+        margin-top: 3rem;
+      }
+
+      .recording-controls {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .record-btn,
+      .stop-btn {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        padding: 1.5rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.5rem;
+      }
+
+      .record-btn {
+        background: var(--accent);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .record-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .stop-btn {
+        background: var(--warning);
+        color: var(--bg);
+        box-shadow: var(--shadow);
+      }
+
+      .stop-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .recording-status {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        display: none;
+      }
+
+      .pulse {
+        width: 15px;
+        height: 15px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+        box-shadow: 0 0 10px var(--accent);
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .answer-input textarea {
+        width: 100%;
+        padding: 2.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        color: var(--text);
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5rem;
+        resize: vertical;
+        min-height: 180px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .answer-input textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .answer-controls {
+        display: flex;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .btn {
+        padding: 1.5rem 3rem;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .btn.primary {
+        background: var(--gradient);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .btn.primary:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        border: 2px solid var(--primary);
+        backdrop-filter: blur(10px);
+      }
+
+      .btn.secondary:hover {
+        transform: translateY(-3px);
+        background: var(--primary);
+        color: var(--bg);
+      }
+
+      /* Interview Sidebar */
+      .interview-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .progress-card,
+      .tips-card {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 3rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .progress-card h4,
+      .tips-card h4 {
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--gradient);
+        border-radius: 5px;
+        transition: width 0.5s ease;
+        position: relative;
+      }
+
+      .progress-fill::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .progress-stats {
+        display: flex;
+        justify-content: space-between;
+        color: var(--text-secondary);
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      .tips-card ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .tips-card li {
+        padding: 1.2rem 0;
+        color: var(--text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        padding-left: 3rem;
+        font-size: 1.4rem;
+        line-height: 1.6;
+      }
+
+      .tips-card li:before {
+        content: "💡";
+        position: absolute;
+        left: 0;
+        top: 1.2rem;
+      }
+
+      .tips-card li:last-child {
+        border-bottom: none;
+      }
+
+      /* RESULTS SECTION */
+      .results {
+        padding: 10rem 7%;
+        background: var(--light-bg);
+        display: none;
+      }
+
+      .results h2 {
+        text-align: center;
+        font-size: 4rem;
+        margin-bottom: 6rem;
+        color: var(--text);
+      }
+
+      .results-overview {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 5rem;
+        margin-bottom: 6rem;
+        background: var(--card-bg);
+        border-radius: 25px;
+        padding: 5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .overall-score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .score-circle {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: var(--gradient);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3rem;
+        position: relative;
+        box-shadow: var(--shadow);
+      }
+
+      .score-circle::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          var(--primary),
+          var(--secondary),
+          var(--accent)
+        );
+        z-index: -1;
+        animation: rotate 3s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .score-value {
+        font-size: 4rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .score-label {
+        font-size: 1.6rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-top: 0.5rem;
+      }
+
+      .score-details h3 {
+        font-size: 2.4rem;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+      }
+
+      .score-details p {
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .score-breakdown {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .score-metric {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .score-metric h4 {
+        font-size: 1.8rem;
+        color: var(--text);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .metric-bar {
+        width: 100%;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .metric-fill {
+        height: 100%;
+        background: var(--gradient);
+        border-radius: 6px;
+        transition: width 1.5s ease-in-out;
+        position: relative;
+      }
+
+      .metric-fill::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      .score-metric span {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.6rem;
+      }
+
+      /* DETAILED FEEDBACK */
+      .detailed-feedback {
+        margin-bottom: 6rem;
+      }
+
+      .detailed-feedback h3 {
+        font-size: 3rem;
+        margin-bottom: 4rem;
+        color: var(--text);
+        text-align: center;
+      }
+
+      .feedback-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+
+      .feedback-card {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 4rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .feedback-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+
+      .feedback-card.positive {
+        border-left: 6px solid var(--success);
+      }
+
+      .feedback-card.improvement {
+        border-left: 6px solid var(--warning);
+      }
+
+      .feedback-card h4 {
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .feedback-card ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .feedback-card li {
+        padding: 1.5rem 0;
+        color: var(--text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        padding-left: 3.5rem;
+        font-size: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .feedback-card.positive li:before {
+        content: "✅";
+        position: absolute;
+        left: 0;
+        top: 1.5rem;
+        font-size: 1.8rem;
+      }
+
+      .feedback-card.improvement li:before {
+        content: "💡";
+        position: absolute;
+        left: 0;
+        top: 1.5rem;
+        font-size: 1.8rem;
+      }
+
+      .feedback-card li:last-child {
+        border-bottom: none;
+      }
+
+      /* ACTION PLAN */
+      .action-plan {
+        margin-bottom: 6rem;
+      }
+
+      .action-plan h3 {
+        font-size: 3rem;
+        margin-bottom: 4rem;
+        color: var(--text);
+        text-align: center;
+      }
+
+      .plan-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .plan-step {
+        display: flex;
+        align-items: flex-start;
+        gap: 3rem;
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 3.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .plan-step::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.05),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .plan-step:hover::before {
+        left: 100%;
+      }
+
+      .plan-step:hover {
+        transform: translateX(10px);
+        border-color: var(--primary);
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: white;
+        flex-shrink: 0;
+        box-shadow: var(--shadow);
+      }
+
+      .step-content h4 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+      }
+
+      .step-content p {
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        line-height: 1.7;
+      }
+
+      /* Toast & Loading */
+      .toast {
+        position: fixed;
+        top: 120px;
+        right: 20px;
+        background: var(--primary);
+        color: white;
+        padding: 1.5rem 2.5rem;
+        border-radius: 12px;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+        box-shadow: var(--shadow);
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+
+      .toast.error {
+        background: var(--accent);
+      }
+
+      .toast.success {
+        background: var(--success);
+      }
+
+      .toast.warning {
+        background: var(--warning);
+        color: var(--bg);
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        color: white;
+        font-size: 1.8rem;
+      }
+
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 2rem;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .navbar .navbar-nav {
+          display: none;
+        }
+
+        #hamburger-menu {
+          display: block;
+        }
+
+        .hero {
+          text-align: center;
+          padding: 10rem 5% 4rem;
+        }
+
+        .hero .content h1 {
+          font-size: 3.5rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-stats {
+          justify-content: center;
+        }
+
+        .interview-setup {
+          grid-template-columns: 1fr;
+        }
+
+        .role-options {
+          grid-template-columns: 1fr;
+        }
+
+        .interview-interface {
+          grid-template-columns: 1fr;
+        }
+
+        .results-overview {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .feedback-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .feedback-container {
+          grid-template-columns: 1fr;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">Hireo<span>.AI</span></a>
+      <div class="navbar-nav">
+        <a href="#home">Beranda</a>
+        <a href="#features">Kenapa Hireo.AI?</a>
+        <a href="#interview">Mulai Interview</a>
+        <a href="#results">Hasil Performa</a>
+        <a href="#feedback">Berikan Feedback</a>
+      </div>
+      <div class="navbar-extra">
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="content">
+        <h1>Tingkatkan Skill Interview Anda dengan <span>Hireo.AI</span></h1>
+        <p>
+          Tingkatkan performa wawancara anda dengan Hireo.AI, platform mock
+          interview berbasis AI yang memberikan insight personal, rekomendasi
+          praktis, dan analisis kompetensi secara real-time.
+        </p>
+        <div class="hero-buttons">
+          <a href="#interview" class="cta primary">
+            <i data-feather="play-circle"></i>
+            Mulai Interview Anda
+          </a>
+          <a href="#features" class="cta secondary">
+            <i data-feather="info"></i>
+            Pelajari Fitur
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <h3>5000+</h3>
+            <p>Pelamar User</p>
+          </div>
+          <div class="stat">
+            <h3>94%</h3>
+            <p>Rating Kesuksesan</p>
+          </div>
+          <div class="stat">
+            <h3>4.8/5</h3>
+            <p>Rating User</p>
+          </div>
+          <div class="stat">
+            <h3>50+</h3>
+            <p>Partner Company</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interview Section -->
+    <section class="interview" id="interview">
+      <div class="container">
+        <h2>Mulai Perjalanan Interview Anda</h2>
+        <div class="interview-setup">
+          <div class="setup-card">
+            <h3>Pilih Role Pekerjaan Anda</h3>
+            <div class="role-options">
+              <div class="role-option active" data-role="software-engineer">
+                <div class="role-icon">💻</div>
+                <h4>Software Engineer</h4>
+                <p>Frontend, Backend, Full-stack Development</p>
+              </div>
+              <div class="role-option" data-role="data-scientist">
+                <div class="role-icon">📊</div>
+                <h4>Data Scientist</h4>
+                <p>Machine Learning, Analytics & Engineering</p>
+              </div>
+              <div class="role-option" data-role="product-manager">
+                <div class="role-icon">📈</div>
+                <h4>Product Manager</h4>
+                <p>Product Strategy & Development</p>
+              </div>
+              <div class="role-option" data-role="ux-designer">
+                <div class="role-icon">🎨</div>
+                <h4>UX Designer</h4>
+                <p>UI/UX Design & Research</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-card">
+            <h3>Custom Pengalaman Anda</h3>
+            <div class="settings-form">
+              <div class="form-group">
+                <label for="difficulty">Level Kesulitan</label>
+                <select id="difficulty">
+                  <option value="beginner">🎯 Junior</option>
+                  <option value="intermediate" selected>🚀 Middle</option>
+                  <option value="advanced">🔥 Senior</option>
+                  <option value="expert">💎 Expert</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="duration">Durasi Interview</label>
+                <select id="duration">
+                  <option value="15">⏱️ 15 menit</option>
+                  <option value="30" selected>⏱️ 30 menit</option>
+                  <option value="45">⏱️ 45 menit</option>
+                  <option value="60">⏱️ 60 menit</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="company-type">Jenis Perusahaan</label>
+                <select id="company-type">
+                  <option value="startup">🚀 Startup</option>
+                  <option value="tech" selected>💻 Tech Company</option>
+                  <option value="enterprise">🏢 Enterprise</option>
+                  <option value="faang">🌎 FAANG Company</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="interview-controls">
+          <button id="start-interview" class="cta primary large">
+            <i data-feather="video"></i>
+            Mulai Interview Sekarang
+          </button>
+          <button id="practice-mode" class="cta secondary large">
+            <i data-feather="activity"></i>
+            Mode Latihan
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Interview Interface -->
+    <section class="live-interview" id="live-interview">
+      <div class="container">
+        <div class="interview-header">
+          <h2>🎙️ Sesi Interview Live</h2>
+          <div class="interview-timer">
+            <span id="timer">30:00</span>
+          </div>
+        </div>
+
+        <div class="interview-interface">
+          <div class="question-section">
+            <div class="question-card">
+              <div class="question-header">
+                <span class="question-number">Pertanyaan 1/8</span>
+                <span class="question-category">Teknis</span>
+              </div>
+              <div class="question-text">
+                <p id="current-question">
+                  Bisakah Anda menjelaskan konsep closure dalam JavaScript dan
+                  memberikan contoh praktis dalam pengembangan web modern?
+                </p>
+              </div>
+              <div class="question-timer">
+                <div class="time-bar">
+                  <div class="time-progress"></div>
+                </div>
+                <span>⏰ Rekomendasi: 2-3 menit</span>
+              </div>
+            </div>
+
+            <div class="answer-section">
+              <div class="recording-controls">
+                <button id="start-recording" class="record-btn">
+                  <i data-feather="mic"></i>
+                  🎤 Mulai Rekaman
+                </button>
+                <div class="recording-status" id="recording-status">
+                  <div class="pulse"></div>
+                  <span>🔴 Sedang Merekam...</span>
+                  <button id="stop-recording" class="stop-btn">
+                    ⏹️ Berhenti
+                  </button>
+                </div>
+              </div>
+
+              <div class="answer-input">
+                <textarea
+                  id="answer-text"
+                  placeholder="💡 Ketik jawaban Anda di sini... Atau gunakan fitur rekaman suara di atas untuk jawaban yang lebih natural."
+                  rows="8"
+                ></textarea>
+              </div>
+
+              <div class="answer-controls">
+                <button id="skip-question" class="btn secondary">
+                  <i data-feather="skip-forward"></i>
+                  Lewati Pertanyaan
+                </button>
+                <button id="submit-answer" class="btn primary">
+                  <i data-feather="send"></i>
+                  Kirim Jawaban
+                </button>
+                <button
+                  id="next-question"
+                  class="btn primary"
+                  style="display: none"
+                >
+                  <i data-feather="arrow-right"></i>
+                  Pertanyaan Berikutnya
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="interview-sidebar">
+            <div class="progress-card">
+              <h4>📊 Progress Interview</h4>
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  id="progress-fill"
+                  style="width: 12%"
+                ></div>
+              </div>
+              <div class="progress-stats">
+                <span id="questions-count">1/8 Pertanyaan</span>
+                <span id="progress-percent">12% Selesai</span>
+              </div>
+            </div>
+
+            <div class="tips-card">
+              <h4>💡 Tips Jawaban Optimal</h4>
+              <ul id="tips-list">
+                <li>
+                  Jelaskan closure sebagai kombinasi function + lexical
+                  environment
+                </li>
+                <li>
+                  Berikan contoh praktis seperti module pattern atau event
+                  handlers
+                </li>
+                <li>
+                  Sebutkan keuntungan: data encapsulation dan private variables
+                </li>
+                <li>Bahasan memory considerations dan potential leaks</li>
+                <li>Kaitkan dengan real-world use cases dalam development</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results" id="results">
+      <div class="container">
+        <h2>🎯 Hasil Analisis Performa Anda</h2>
+        <div class="results-overview">
+          <div class="overall-score">
+            <div class="score-circle">
+              <div class="score-value" id="overall-score">7.8</div>
+              <div class="score-label">Skor /10</div>
+            </div>
+            <div class="score-details">
+              <h3>Performa Solid! 🚀</h3>
+              <p>
+                Anda menunjukkan pemahaman teknis yang kuat dengan beberapa area
+                untuk improvement. Terus berlatih!
+              </p>
+            </div>
+          </div>
+
+          <div class="score-breakdown">
+            <div class="score-metric">
+              <h4>Pengetahuan Teknis <span id="tech-score">8.5/10</span></h4>
+              <div class="metric-bar">
+                <div
+                  class="metric-fill"
+                  id="tech-progress"
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+            <div class="score-metric">
+              <h4>Komunikasi <span id="comm-score">7.5/10</span></h4>
+              <div class="metric-bar">
+                <div
+                  class="metric-fill"
+                  id="comm-progress"
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+            <div class="score-metric">
+              <h4>Problem Solving <span id="problem-score">8.0/10</span></h4>
+              <div class="metric-bar">
+                <div
+                  class="metric-fill"
+                  id="problem-progress"
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+            <div class="score-metric">
+              <h4>
+                Kepercayaan Diri <span id="confidence-score">7.0/10</span>
+              </h4>
+              <div class="metric-bar">
+                <div
+                  class="metric-fill"
+                  id="confidence-progress"
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Feedback -->
+        <div class="detailed-feedback">
+          <h3>📝 Detail Feedback Mendalam</h3>
+          <div class="feedback-cards">
+            <div class="feedback-card positive">
+              <h4>✅ Kekuatan Utama Anda</h4>
+              <ul>
+                <li>
+                  <strong>Pemahaman Konsep Teknis:</strong> Demonstrasi
+                  pengetahuan yang sangat baik tentang fundamental programming
+                  dan software architecture
+                </li>
+                <li>
+                  <strong>Struktur Jawaban:</strong> Kemampuan mengorganisir
+                  pemikiran secara logis dan sistematis dengan alur yang mudah
+                  diikuti
+                </li>
+                <li>
+                  <strong>Problem Solving Skills:</strong> Pendekatan analitis
+                  yang kuat dalam memecahkan masalah kompleks dengan solusi
+                  kreatif
+                </li>
+                <li>
+                  <strong>Technical Vocabulary:</strong> Penggunaan terminologi
+                  teknis yang tepat dan konsisten dalam seluruh jawaban
+                </li>
+              </ul>
+            </div>
+            <div class="feedback-card improvement">
+              <h4>💡 Area Pengembangan</h4>
+              <ul>
+                <li>
+                  <strong>Contoh Praktis:</strong> Tambahkan lebih banyak studi
+                  kasus dari pengalaman nyata dan project sebelumnya
+                </li>
+                <li>
+                  <strong>Kedalaman Analisis:</strong> Kembangkan penjelasan
+                  dengan data dan metrik yang lebih terukur dan spesifik
+                </li>
+                <li>
+                  <strong>Kecepatan Respons:</strong> Tingkatkan kecepatan dalam
+                  merespon pertanyaan tak terduga dan scenario interview
+                </li>
+                <li>
+                  <strong>Storytelling:</strong> Perkuat kemampuan bercerita
+                  untuk membuat jawaban lebih engaging dan memorable
+                </li>
+                <li>
+                  <strong>Bahasa Tubuh Virtual:</strong> Optimalkan tone dan
+                  pacing suara untuk komunikasi virtual yang lebih efektif
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Plan -->
+        <div class="action-plan">
+          <h3>🎯 Rencana Aksi Personalisasi</h3>
+          <div class="plan-steps">
+            <div class="plan-step" onclick="toggleStep(this)">
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <h4>Latihan Komunikasi Teknis (Minggu 1-2)</h4>
+                <p>
+                  <strong>🎯 Target:</strong> Meningkatkan skor komunikasi dari
+                  7.5 menjadi 8.5<br />
+                  <strong>📚 Aktivitas:</strong> Rekam diri menjelaskan 3 konsep
+                  teknis kompleks per hari, analisis kecepatan bicara dan
+                  kejelasan penyampaian<br />
+                  <strong>⏱️ Time Commitment:</strong> 30 menit/hari<br />
+                  <strong>📊 Metrik Sukses:</strong> Peningkatan 15% dalam
+                  clarity score
+                </p>
+              </div>
+            </div>
+            <div class="plan-step" onclick="toggleStep(this)">
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <h4>Pendalaman Teknis Lanjutan (Minggu 3-4)</h4>
+                <p>
+                  <strong>🎯 Target:</strong> Menguasai 5 konsep teknis lanjutan
+                  yang relevan dengan role<br />
+                  <strong>📚 Aktivitas:</strong> Pelajari system design
+                  patterns, cloud architecture principles, dan advanced
+                  algorithms melalui studi kasus<br />
+                  <strong>⏱️ Time Commitment:</strong> 45 menit/hari<br />
+                  <strong>📊 Metrik Sukses:</strong> Mampu menjelaskan 5 konsep
+                  dengan confidence score 9/10
+                </p>
+              </div>
+            </div>
+            <div class="plan-step" onclick="toggleStep(this)">
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <h4>Sesi Mock Interview Intensif (Minggu 5-6)</h4>
+                <p>
+                  <strong>🎯 Target:</strong> Meningkatkan kepercayaan diri dan
+                  kemampuan adaptasi<br />
+                  <strong>📚 Aktivitas:</strong> Lakukan 3 sesi mock interview
+                  dengan scenario yang bervariasi dan difficulty meningkat<br />
+                  <strong>⏱️ Time Commitment:</strong> 2 sesi/minggu @60
+                  menit<br />
+                  <strong>📊 Metrik Sukses:</strong> Peningkatan 20% dalam
+                  handling unexpected questions
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // ===== INTERVIEW DATA =====
+      const interviewQuestions = {
+        "software-engineer": {
+          beginner: [
+            {
+              question:
+                "Apa perbedaan antara let, const, dan var dalam JavaScript? Berikan contoh penggunaannya.",
+              category: "Fundamental",
+              time: 120,
+              tips: [
+                "Jelaskan scope differences (block vs function)",
+                "Diskusikan hoisting behavior",
+                "Berikan contoh penggunaan praktis",
+                "Sebutkan best practices modern",
+              ],
+            },
+          ],
+          intermediate: [
+            {
+              question:
+                "Bisakah Anda menjelaskan konsep closure dalam JavaScript dan memberikan contoh praktis dalam pengembangan web modern?",
+              category: "Advanced JS",
+              time: 180,
+              tips: [
+                "Definisikan closure sebagai function + lexical environment",
+                "Berikan contoh module pattern dan private variables",
+                "Jelaskan use cases dalam event handlers",
+                "Sebutkan memory considerations",
+              ],
+            },
+            {
+              question:
+                "Bagaimana Anda akan mengoptimalkan performa website yang mengalami slow loading times?",
+              category: "Performance",
+              time: 240,
+              tips: [
+                "Diskusikan frontend optimizations (bundling, lazy loading)",
+                "Sebutkan backend improvements (caching, DB queries)",
+                "Pertimbangkan CDN dan image optimization",
+                "Sebutkan monitoring tools yang digunakan",
+              ],
+            },
+          ],
+        },
+        "data-scientist": {
+          intermediate: [
+            {
+              question:
+                "Jelaskan bias-variance tradeoff dalam machine learning dan bagaimana menanganinya?",
+              category: "ML Theory",
+              time: 180,
+              tips: [
+                "Definisikan bias dan variance dengan jelas",
+                "Jelaskan tradeoff relationship dan overfitting/underfitting",
+                "Sebutkan techniques untuk balance (regularization, cross-validation)",
+                "Berikan contoh dalam model evaluation",
+              ],
+            },
+          ],
+        },
+      };
+
+      // ===== GLOBAL STATE =====
+      let currentInterview = {
+        role: "software-engineer",
+        difficulty: "intermediate",
+        duration: 30,
+        companyType: "tech",
+        currentQuestion: 0,
+        totalQuestions: 3,
+        timer: null,
+        timeRemaining: 30 * 60,
+        isRecording: false,
+      };
+
+      // ===== INITIALIZATION =====
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Initialize event listeners
+        initializeEventListeners();
+
+        // Initialize role selection
+        initializeRoleSelection();
+      });
+
+      // ===== EVENT LISTENERS =====
+      function initializeEventListeners() {
+        // Start Interview Button
+        document
+          .getElementById("start-interview")
+          .addEventListener("click", startInterview);
+
+        // Practice Mode Button
+        document
+          .getElementById("practice-mode")
+          .addEventListener("click", practiceMode);
+
+        // Recording Controls
+        document
+          .getElementById("start-recording")
+          .addEventListener("click", startRecording);
+        document
+          .getElementById("stop-recording")
+          .addEventListener("click", stopRecording);
+
+        // Answer Controls
+        document
+          .getElementById("skip-question")
+          .addEventListener("click", skipQuestion);
+        document
+          .getElementById("submit-answer")
+          .addEventListener("click", submitAnswer);
+        document
+          .getElementById("next-question")
+          .addEventListener("click", nextQuestion);
+
+        // Settings Changes
+        document
+          .getElementById("difficulty")
+          .addEventListener("change", updateSettings);
+        document
+          .getElementById("duration")
+          .addEventListener("change", updateSettings);
+        document
+          .getElementById("company-type")
+          .addEventListener("change", updateSettings);
+      }
+
+      // ===== ROLE SELECTION =====
+      function initializeRoleSelection() {
+        const roleOptions = document.querySelectorAll(".role-option");
+
+        roleOptions.forEach((option) => {
+          option.addEventListener("click", function () {
+            // Remove active class from all options
+            roleOptions.forEach((opt) => opt.classList.remove("active"));
+
+            // Add active class to clicked option
+            this.classList.add("active");
+
+            // Update current role
+            currentInterview.role = this.getAttribute("data-role");
+
+            showToast(
+              `Role ${this.querySelector("h4").textContent} dipilih`,
+              "success"
+            );
+          });
+        });
+      }
+
+      // ===== INTERVIEW FLOW =====
+      function startInterview() {
+        showLoading("Mempersiapkan sesi interview...");
+
+        setTimeout(() => {
+          hideLoading();
+
+          // Hide interview setup
+          document.getElementById("interview").style.display = "none";
+
+          // Show live interview
+          document.getElementById("live-interview").style.display = "block";
+
+          // Scroll to live interview
+          document
+            .getElementById("live-interview")
+            .scrollIntoView({ behavior: "smooth" });
+
+          // Initialize interview session
+          initializeInterviewSession();
+
+          showToast("Sesi interview dimulai! Semoga sukses!", "success");
+        }, 2000);
+      }
+
+      function practiceMode() {
+        showToast("Mode latihan diaktifkan! Tidak ada scoring.", "warning");
+      }
+
+      function initializeInterviewSession() {
+        // Reset state
+        currentInterview.currentQuestion = 0;
+        currentInterview.timeRemaining = currentInterview.duration * 60;
+
+        // Start timer
+        startTimer();
+
+        // Load first question
+        loadQuestion();
+
+        // Update progress
+        updateProgress();
+      }
+
+      function loadQuestion() {
+        const questions =
+          interviewQuestions[currentInterview.role]?.[
+            currentInterview.difficulty
+          ] || interviewQuestions["software-engineer"]["intermediate"];
+
+        if (questions && questions.length > 0) {
+          const currentQ =
+            questions[
+              Math.min(currentInterview.currentQuestion, questions.length - 1)
+            ];
+
+          // Update UI
+          document.getElementById("current-question").textContent =
+            currentQ.question;
+          document.querySelector(
+            ".question-number"
+          ).textContent = `Pertanyaan ${currentInterview.currentQuestion + 1}/${
+            currentInterview.totalQuestions
+          }`;
+          document.querySelector(".question-category").textContent =
+            currentQ.category;
+
+          // Update timer recommendation
+          const min = Math.floor(currentQ.time / 60);
+          const max = Math.ceil(currentQ.time / 60);
+          document.querySelector(
+            ".question-timer span"
+          ).textContent = `⏰ Rekomendasi: ${min}-${max} menit`;
+
+          // Update tips
+          const tipsList = document.getElementById("tips-list");
+          tipsList.innerHTML = "";
+          currentQ.tips.forEach((tip) => {
+            const li = document.createElement("li");
+            li.textContent = tip;
+            tipsList.appendChild(li);
+          });
+
+          // Reset answer area
+          document.getElementById("answer-text").value = "";
+          document.getElementById("submit-answer").style.display = "flex";
+          document.getElementById("next-question").style.display = "none";
+        }
+      }
+
+      function skipQuestion() {
+        showToast("Pertanyaan dilewati", "warning");
+        nextQuestion();
+      }
+
+      function submitAnswer() {
+        const answerText = document.getElementById("answer-text").value;
+
+        if (!answerText.trim() && !currentInterview.isRecording) {
+          showToast("Silakan berikan jawaban atau rekam suara Anda", "error");
+          return;
+        }
+
+        showLoading("Menganalisis jawaban Anda...");
+
+        setTimeout(() => {
+          hideLoading();
+          showToast("Jawaban berhasil disubmit!", "success");
+
+          // Show next question button
+          document.getElementById("submit-answer").style.display = "none";
+          document.getElementById("next-question").style.display = "flex";
+
+          // Update progress
+          updateProgress();
+        }, 1500);
+      }
+
+      function nextQuestion() {
+        currentInterview.currentQuestion++;
+
+        if (
+          currentInterview.currentQuestion < currentInterview.totalQuestions
+        ) {
+          loadQuestion();
+          showToast(
+            `Pertanyaan ${currentInterview.currentQuestion + 1} dimuat`,
+            "success"
+          );
+        } else {
+          completeInterview();
+        }
+      }
+
+      function completeInterview() {
+        showLoading("Menyelesaikan interview dan menganalisis hasil...");
+
+        setTimeout(() => {
+          hideLoading();
+
+          // Hide live interview
+          document.getElementById("live-interview").style.display = "none";
+
+          // Show results section
+          document.getElementById("results").style.display = "block";
+
+          // Scroll to results
+          document
+            .getElementById("results")
+            .scrollIntoView({ behavior: "smooth" });
+
+          // Animate score results
+          animateScoreResults();
+
+          showToast("Interview selesai! Lihat hasil analisis Anda.", "success");
+        }, 3000);
+      }
+
+      // ===== TIMER FUNCTIONS =====
+      function startTimer() {
+        // Clear existing timer
+        if (currentInterview.timer) {
+          clearInterval(currentInterview.timer);
+        }
+
+        updateTimerDisplay();
+
+        currentInterview.timer = setInterval(() => {
+          currentInterview.timeRemaining--;
+
+          if (currentInterview.timeRemaining <= 0) {
+            clearInterval(currentInterview.timer);
+            showToast("Waktu interview habis!", "warning");
+            completeInterview();
+            return;
+          }
+
+          updateTimerDisplay();
+        }, 1000);
+      }
+
+      function updateTimerDisplay() {
+        const minutes = Math.floor(currentInterview.timeRemaining / 60);
+        const seconds = currentInterview.timeRemaining % 60;
+        document.getElementById("timer").textContent = `${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      }
+
+      // ===== PROGRESS UPDATES =====
+      function updateProgress() {
+        const progressPercent =
+          ((currentInterview.currentQuestion + 1) /
+            currentInterview.totalQuestions) *
+          100;
+
+        // Update progress bar
+        document.getElementById(
+          "progress-fill"
+        ).style.width = `${progressPercent}%`;
+
+        // Update progress stats
+        document.getElementById("questions-count").textContent = `${
+          currentInterview.currentQuestion + 1
+        }/${currentInterview.totalQuestions} Pertanyaan`;
+        document.getElementById("progress-percent").textContent = `${Math.round(
+          progressPercent
+        )}% Selesai`;
+      }
+
+      // ===== RECORDING FUNCTIONS =====
+      function startRecording() {
+        currentInterview.isRecording = true;
+
+        // Show recording status
+        document.getElementById("recording-status").style.display = "flex";
+        document.getElementById("start-recording").style.display = "none";
+
+        showToast("Rekaman dimulai...", "success");
+      }
+
+      function stopRecording() {
+        currentInterview.isRecording = false;
+
+        // Hide recording status
+        document.getElementById("recording-status").style.display = "none";
+        document.getElementById("start-recording").style.display = "flex";
+
+        showToast("Rekaman dihentikan. Jawaban tersimpan.", "success");
+      }
+
+      // ===== RESULTS ANIMATION =====
+      function animateScoreResults() {
+        // Animate overall score
+        const scoreElement = document.getElementById("overall-score");
+        animateCounter(scoreElement, 0, 7.8, 2000);
+
+        // Animate metric bars with delay
+        setTimeout(() => {
+          document.getElementById("tech-progress").style.width = "85%";
+          document.getElementById("comm-progress").style.width = "75%";
+          document.getElementById("problem-progress").style.width = "80%";
+          document.getElementById("confidence-progress").style.width = "70%";
+        }, 500);
+      }
+
+      function animateCounter(element, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          const value = start + progress * (end - start);
+          element.textContent = value.toFixed(1);
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      }
+
+      // ===== SETTINGS UPDATE =====
+      function updateSettings() {
+        currentInterview.difficulty =
+          document.getElementById("difficulty").value;
+        currentInterview.duration = parseInt(
+          document.getElementById("duration").value
+        );
+        currentInterview.companyType =
+          document.getElementById("company-type").value;
+        currentInterview.timeRemaining = currentInterview.duration * 60;
+      }
+
+      // ===== UTILITY FUNCTIONS =====
+      function showToast(message, type = "success") {
+        // Remove existing toasts
+        const existingToasts = document.querySelectorAll(".toast");
+        existingToasts.forEach((toast) => toast.remove());
+
+        // Create new toast
+        const toast = document.createElement("div");
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+
+        document.body.appendChild(toast);
+
+        // Remove toast after 3 seconds
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      }
+
+      function showLoading(message = "Memproses...") {
+        // Remove existing loading
+        const existingLoading = document.querySelector(".loading-overlay");
+        if (existingLoading) existingLoading.remove();
+
+        const loading = document.createElement("div");
+        loading.className = "loading-overlay";
+        loading.innerHTML = `
+                <div class="loading-spinner"></div>
+                <div class="loading-message">${message}</div>
+            `;
+
+        document.body.appendChild(loading);
+      }
+
+      function hideLoading() {
+        const loading = document.querySelector(".loading-overlay");
+        if (loading) loading.remove();
+      }
+
+      function toggleStep(element) {
+        element.classList.toggle("expanded");
+      }
+    </script>
+  </body>
+</html>

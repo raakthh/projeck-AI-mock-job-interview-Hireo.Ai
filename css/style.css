@@ -1,0 +1,18 @@
+/* CSS untuk Action Plan Toggle */
+.step-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.plan-step.expanded .step-content {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.plan-step.expanded {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary);
+}
